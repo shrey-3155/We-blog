@@ -1,0 +1,63 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .container {
+    padding-top: 20px;
+  }
+
+  .button-spacing {
+    margin-right: 10px; /* Adjust this value to your liking */
+  }
+
+  .container {
+    font-family: 'Rubik', sans-serif;
+  }
+  
+  button {
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+  .btn-block {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .btn-outline-primary, .btn-outline-success {
+    border-width: 2px;
+  }
+  
+  .btn-outline-primary:hover, .btn-outline-success:hover {
+    background-color: transparent;
+    color: #fff;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .btn-primary {
+    margin-right: 10px;
+  }
+  
+  

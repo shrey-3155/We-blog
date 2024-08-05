@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landingpage.component.css">
+</head>
+<body>
+<div class="container mt-4">
+  <div class="container my-4">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <h2>
+          <button class="btn btn-outline-primary btn-lg btn-block" (click)="getAllBlogs()">All Blogs</button>
+        </h2>
+      </div>
+      <div class="col-md-4 d-flex justify-content-center">
+        <h2 class="mr-3">
+          <button class="btn btn-outline-primary btn-lg btn-block" (click)="getMyBlogs()">My Blogs</button>
+        </h2>
+      </div>
+      <div class="col-md-3 d-flex justify-content-end">
+        <button class="btn btn-primary btn-lg" (click)="openAddBlogModal()">Add Blog</button>
+      </div>
+      <div class="col-md-1 d-flex justify-content-end">
+        <button class="btn btn-danger btn-lg" (click)="logout()">LOGOUT</button>
+      </div>
+    </div>
+  </div>
+  
+  
+    <div class="row">
+      <div *ngFor="let blog of blogs" class="col-md-4">
+        <div class="card mb-3">
+          <img [src]="blog.imageURL" class="card-img-top" alt="Blog Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <p class="card-text">{{ blog.content | slice:0:100 }}...</p>
+            <a [routerLink]="['/readmore']" [queryParams]="{ postID: blog.postID }" class="btn btn-secondary button-spacing">Read More</a>
+            <a [href]="blog.PDFURL" target="_blank" class="btn btn-secondary button-spacing">PDF</a>
+            <a (click)="deleteBlog(blog.postID)" class="btn btn-secondary button-spacing">Delete</a>
+            <a [routerLink]="['/editblog']" [queryParams]="{ postID: blog.postID }" class="btn btn-secondary">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

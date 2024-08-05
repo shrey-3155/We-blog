@@ -1,0 +1,37 @@
+/* Custom CSS for Signup Form */
+.signup-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .text-danger {
+    font-size: 0.875rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 767.98px) {
+    .signup-form {
+      padding: 15px;
+    }
+  }
+  
