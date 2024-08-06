@@ -34,7 +34,7 @@ export class LandingpageComponent {
 
   fetchBlogs(): void {
     // Fetch blogs for the current user
-    this.http.post<any>(this.endpoint + `/getBlogsFunction`, { userID: this.userID }).subscribe({
+    this.http.post<any>(this.endpoint + `/getBlogFunction`, { userID: this.userID }).subscribe({
       next: (data) => {
         this.blogs = data; // Assuming the response is already in JSON format
       },
@@ -54,7 +54,7 @@ export class LandingpageComponent {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.post(this.endpoint + `/deleteBlogFunction`, { postId: postID }).subscribe(
+        this.http.post(this.endpoint + `/DeleteBlogFunction`, { postId: postID }).subscribe(
           () => {
             Swal.fire(
               'Deleted!',

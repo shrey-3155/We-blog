@@ -29,3 +29,12 @@
     }
   }
   
+  .logo {
+    width: 250px; /* Adjust the width as needed */
+    height: 250px; /* Adjust the height as needed */
+    background-image: url('We-blog.png'); /* Path to your logo image */
+    background-size: contain; /* Ensure the image fits within the div */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto; /* Center the logo horizontally */
+}

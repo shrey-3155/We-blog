@@ -40,8 +40,8 @@
             <p class="card-text">{{ blog.content | slice:0:100 }}...</p>
             <a [routerLink]="['/readmore']" [queryParams]="{ postID: blog.postID }" class="btn btn-secondary button-spacing">Read More</a>
             <a [href]="blog.PDFURL" target="_blank" class="btn btn-secondary button-spacing">PDF</a>
-            <a (click)="deleteBlog(blog.postID)" class="btn btn-secondary button-spacing">Delete</a>
-            <a [routerLink]="['/editblog']" [queryParams]="{ postID: blog.postID }" class="btn btn-secondary">Edit</a>
+            <a (click)="deleteBlog(blog.postID)" *ngIf = "blog.userID == userID" class="btn btn-secondary button-spacing">Delete</a>
+            <a [routerLink]="['/editblog']" *ngIf = "blog.userID == userID" [queryParams]="{ postID: blog.postID }" class="btn btn-secondary">Edit</a>
           </div>
         </div>
       </div>

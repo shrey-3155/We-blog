@@ -30,17 +30,17 @@
 
             <div class="form-group">
                 <label for="image">Upload a new Image</label>
-                <input type="file" id="image" (change)="onImageSelected($event)" class="form-control-file">
-                <div *ngIf="imageError" class="text-danger">
-                    {{ imageError }}
+                <input type="file" id="image" (change)="onImageSelected($event)" class="form-control-file" [class.is-invalid]="editBlog.controls['ImageBase64'].invalid && editBlog.controls['ImageBase64'].touched">
+                <div *ngIf="editBlog.controls['ImageBase64'].invalid && editBlog.controls['ImageBase64'].touched" class="text-danger">
+                    Image is required.
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="pdf">Upload a new PDF</label>
-                <input type="file" id="pdf" (change)="onPDFSelected($event)" class="form-control-file">
-                <div *ngIf="pdfError" class="text-danger">
-                    {{ pdfError }}
+                <input type="file" id="pdf" (change)="onPDFSelected($event)" class="form-control-file" [class.is-invalid]="editBlog.controls['PDFBase64'].invalid && editBlog.controls['PDFBase64'].touched">
+                <div *ngIf="editBlog.controls['PDFBase64'].invalid && editBlog.controls['PDFBase64'].touched" class="text-danger">
+                    PDF is required.
                 </div>
             </div>
 

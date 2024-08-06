@@ -30,8 +30,8 @@ export class EditBlogComponent implements OnInit {
       UserID: localStorage.getItem("UserId"),
       Title: ['', Validators.required],
       Content: ['', Validators.required],
-      ImageBase64: [''],
-      PDFBase64: ['']
+      ImageBase64: ['',Validators.required],
+      PDFBase64: ['',Validators.required]
     });
   }
   ngOnInit(): void {
@@ -41,13 +41,13 @@ export class EditBlogComponent implements OnInit {
         PostID: this.postID
       });
     });
-    this.getBlogDetails(this.postID);
+    this.getBlogDetails();
     
   }
 
-  getBlogDetails(postId: number) {
+  getBlogDetails() {
     const url = this.endpoint + '/getIdWiseBlogFunction';
-    const requestBody = { postId: postId }; // Sending postId in the body
+    const requestBody = { postId: this.postID }; // Sending postId in the body
   
     this.http.post<any>(url, requestBody).subscribe(
       (response) => {
@@ -111,8 +111,8 @@ export class EditBlogComponent implements OnInit {
     if (this.editBlog.invalid) {
       return;
     }
-
     const url = this.endpoint + `/updateBlogFunction`; // Update with your actual API endpoint
+    
     this.http.post<any>(url, this.editBlog.value).subscribe(
       (response) => {
         Swal.fire('Success', 'Blog updated successfully', 'success').then(() => {

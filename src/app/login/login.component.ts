@@ -4,16 +4,22 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { environment } from '../../environments/environment.development';
+import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginComponent {
   loginForm:FormGroup;
   loginResponse:any=[];
   endpoint: string = environment.apiUrl;
+  isAuthenticat: boolean= false;
 
   constructor(
     private fb: FormBuilder,
@@ -29,6 +35,13 @@ export class LoginComponent {
 
   SignupRedirect(){
     this.router.navigate(['/signup']);
+  }
+
+  isAuthenticated(){
+    if(localStorage.getItem("UserId")){
+      this.isAuthenticat = true;
+    }
+    return this.isAuthenticat;
   }
   onSubmit(): void {
     if (this.loginForm.invalid) {
