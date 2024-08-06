@@ -34,7 +34,7 @@ export class LandingpageComponent {
 
   fetchBlogs(): void {
     // Fetch blogs for the current user
-    this.http.post<any>(this.endpoint + `/fetchBlogsFunction`, { userID: this.userID }).subscribe({
+    this.http.post<any>(this.endpoint + `/getBlogsFunction`, { userID: this.userID }).subscribe({
       next: (data) => {
         this.blogs = data; // Assuming the response is already in JSON format
       },

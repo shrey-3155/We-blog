@@ -46,28 +46,31 @@ export class EditBlogComponent implements OnInit {
   }
 
   getBlogDetails(postId: number) {
-    const url = this.endpoint + `/getIdWiseBlogFunction?postId=${postId}`;
-    this.http.get<any>(url).subscribe(
+    const url = this.endpoint + '/getIdWiseBlogFunction';
+    const requestBody = { postId: postId }; // Sending postId in the body
+  
+    this.http.post<any>(url, requestBody).subscribe(
       (response) => {
-        console.log(JSON.parse(response.body));
-        
+        const responseBody = JSON.parse(response.body);
+  
         this.editBlog.patchValue({
-          PostID: JSON.parse(response.body).postID,
-          UserID: JSON.parse(response.body).userID,
-          Title: JSON.parse(response.body).title,
-          Content: JSON.parse(response.body).content,
-          ImageBase64: JSON.parse(response.body).imageURL,
-          PDFBase64: JSON.parse(response.body).PDFURL,
-          sentiment: JSON.parse(response.body).sentiment
+          PostID: responseBody.postID,
+          UserID: responseBody.userID,
+          Title: responseBody.title,
+          Content: responseBody.content,
+          ImageBase64: responseBody.imageURL,
+          PDFBase64: responseBody.PDFURL,
+          sentiment: responseBody.sentiment
         });
+  
         console.log(this.editBlog.value);
-        
       },
       (error) => {
         console.error('Error fetching blog details:', error);
       }
     );
   }
+  
   onImageSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
     const file = fileInput.files?.[0];
