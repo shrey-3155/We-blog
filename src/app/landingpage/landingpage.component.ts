@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { environment } from '../../environments/environment.development';
@@ -18,7 +18,7 @@ import { environment } from '../../environments/environment.development';
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.css'
 })
-export class LandingpageComponent {
+export class LandingpageComponent implements OnInit{
   blogs: any = [];
   userID: string | null = null;
   endpoint: string = environment.apiUrl;
@@ -85,6 +85,7 @@ export class LandingpageComponent {
   }
 
   getMyBlogs(){
+    this.blogs = [];
     this.fetchBlogs();
   }
 

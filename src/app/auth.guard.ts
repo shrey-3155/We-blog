@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
   const authService = inject(LoginComponent);
   const router = inject(Router);
-
   const isAuthenticated = authService.isAuthenticated();
 
   if (!isAuthenticated) {
